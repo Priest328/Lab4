@@ -5,19 +5,11 @@ on: [push, pull_request]
 jobs:
   test:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v2
-
-      # Set up Python (You can use any version you prefer)
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
           python-version: '3.9'
-
-      # Fake test step that always returns true
-      - name: Always succeed
-        run: echo "This step always succeeds, simulating test run."
-
-      # Explicitly exit with success code (0)
-      - name: Return 
+      - name: Run tests
+        run: UnitTest
