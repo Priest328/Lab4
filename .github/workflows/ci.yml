@@ -5,11 +5,22 @@ on: [push, pull_request]
 jobs:
   test:
     runs-on: ubuntu-latest
+
     steps:
+      # Checkout code from the repository
       - uses: actions/checkout@v2
+
+      # Set up Python (specify the version you need)
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
           python-version: '3.9'
+
+      # Install dependencies (make sure requirements.txt is in your repo)
+      - name: Install dependencies
+        run: |
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      # Run tests (adjust file path if necessary)
       - name: Run tests
         run: pytest UnitTest.py
