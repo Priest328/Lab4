@@ -16,10 +16,14 @@ jobs:
         with:
           python-version: '3.9'
 
-      # Install dependencies (make sure requirements.txt is in your repo)
+      # Install dependencies from requirements.txt (if it exists)
       - name: Install dependencies
         run: |
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          
+      # Install pytest if not in requirements.txt
+      - name: Install pytest
+        run: pip install pytest
 
       # Run tests (adjust file path if necessary)
       - name: Run tests
